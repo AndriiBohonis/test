@@ -29,14 +29,15 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
   return (
     <Grow key={id} in={true}>
       <ListItem disableGutters>
-        <Paper sx={{ width: '100%', px: '16px' }}>
+        <Paper sx={{ width: '100%', px: { xs: '8px', lg: '16px' } }}>
           <Stack
-            sx={{ height: '70px' }}
+            sx={{ minHeight: '70px' }}
             spacing={4}
             direction='row'
             alignItems={'center'}>
-            <ButtonGroup>
+            <ButtonGroup size='small'>
               <Button
+                sx={{ fontSize: '8px' }}
                 disabled={status === 'progress'}
                 onClick={handelProgress}
                 variant='outlined'>
@@ -44,6 +45,7 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
               </Button>
 
               <Button
+                sx={{ fontSize: { xs: '8px', md: '16px' } }}
                 color='success'
                 disabled={status === 'done'}
                 onClick={handelComplied}
@@ -53,7 +55,7 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
             </ButtonGroup>
             <Typography
               sx={{
-                fontSize: '24px',
+                fontSize: { sx: '16px', md: '24px' },
                 flexGrow: 1,
                 textDecoration: status === 'done' ? 'line-through' : 'none',
               }}
@@ -62,7 +64,7 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
             </Typography>
             <Typography variant='caption'>{status}</Typography>
             <ButtonWithIcon title='Remove' click={() => remove(id)}>
-              <DeleteIcon />
+              <DeleteIcon fontSize='small' />
             </ButtonWithIcon>
           </Stack>
         </Paper>
