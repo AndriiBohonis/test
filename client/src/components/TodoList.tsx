@@ -1,7 +1,7 @@
 import { useTodoQuery } from '../hooks/useTodosQuery';
 import { TodoStatusFilter } from '../types/todo';
 import Loader from './Lader';
-import ToDoSnackbar from './SnecBar';
+import ToDoSnackbar from './SneckBar';
 
 import { TodoItem } from './TodoItem';
 

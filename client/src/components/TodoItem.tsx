@@ -1,6 +1,7 @@
 import {
   Button,
   ButtonGroup,
+  Grow,
   ListItem,
   Paper,
   Stack,
@@ -26,44 +27,46 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
   };
 
   return (
-    <ListItem disableGutters key={id}>
-      <Paper sx={{ width: '100%', px: '16px' }}>
-        <Stack
-          sx={{ height: '70px' }}
-          spacing={4}
-          direction='row'
-          alignItems={'center'}>
-          <ButtonGroup>
-            <Button
-              disabled={status === 'progress'}
-              onClick={handelProgress}
-              variant='outlined'>
-              progress
-            </Button>
+    <Grow key={id} in={true}>
+      <ListItem disableGutters>
+        <Paper sx={{ width: '100%', px: '16px' }}>
+          <Stack
+            sx={{ height: '70px' }}
+            spacing={4}
+            direction='row'
+            alignItems={'center'}>
+            <ButtonGroup>
+              <Button
+                disabled={status === 'progress'}
+                onClick={handelProgress}
+                variant='outlined'>
+                progress
+              </Button>
 
-            <Button
-              color='success'
-              disabled={status === 'done'}
-              onClick={handelComplied}
-              variant='outlined'>
-              done
-            </Button>
-          </ButtonGroup>
-          <Typography
-            sx={{
-              fontSize: '24px',
-              flexGrow: 1,
-              textDecoration: status === 'done' ? 'line-through' : 'none',
-            }}
-            component={'p'}>
-            {todo}
-          </Typography>
-          <Typography variant='caption'>{status}</Typography>
-          <ButtonWithIcon title='Remove' click={() => remove(id)}>
-            <DeleteIcon />
-          </ButtonWithIcon>
-        </Stack>
-      </Paper>
-    </ListItem>
+              <Button
+                color='success'
+                disabled={status === 'done'}
+                onClick={handelComplied}
+                variant='outlined'>
+                done
+              </Button>
+            </ButtonGroup>
+            <Typography
+              sx={{
+                fontSize: '24px',
+                flexGrow: 1,
+                textDecoration: status === 'done' ? 'line-through' : 'none',
+              }}
+              component={'p'}>
+              {todo}
+            </Typography>
+            <Typography variant='caption'>{status}</Typography>
+            <ButtonWithIcon title='Remove' click={() => remove(id)}>
+              <DeleteIcon />
+            </ButtonWithIcon>
+          </Stack>
+        </Paper>
+      </ListItem>
+    </Grow>
   );
 };

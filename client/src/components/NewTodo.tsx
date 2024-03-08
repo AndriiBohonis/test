@@ -24,6 +24,7 @@ const NewTodo = () => {
     <form onSubmit={submit}>
       <Stack direction='row'>
         <TextField
+          autoComplete='off'
           fullWidth
           value={title}
           onChange={event => setTitle(event.target.value)}

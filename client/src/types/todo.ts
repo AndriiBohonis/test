@@ -1,7 +1,12 @@
 export type TodoStatus = 'pending' | 'progress' | 'done';
 export type TodoStatusFilter = TodoStatus | 'all';
-export type Todo = {
+export interface Todo {
   id: string;
   todo: string;
   status: TodoStatus;
-};
+}
+
+export interface TodoUpdateVariables {
+  id: string;
+  status: TodoStatus;
+}
