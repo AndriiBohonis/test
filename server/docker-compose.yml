@@ -29,3 +29,5 @@ services:
       - TYPEORM_HOST=db
     depends_on:
       - db
+    restart: unless-stopped
+    command: npm run start
