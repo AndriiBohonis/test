@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { Todo, TodoStatus, TodoStatusFilter } from '../types/todo';
+import { Todo, TodoStatusFilter, TodoUpdateVariables } from '../types/todo';
 
 axios.defaults.baseURL = 'http://localhost:3001/';
 
@@ -18,13 +18,7 @@ export const createTodo = async (todo: string) => {
   });
   return response.data;
 };
-export const updateStatusTodo = async ({
-  id,
-  status,
-}: {
-  id: string;
-  status: TodoStatus;
-}) => {
+export const updateStatusTodo = async ({ id, status }: TodoUpdateVariables) => {
   await axios.patch<Todo[]>(`todos/${id}/status`, {
     status,
   });
