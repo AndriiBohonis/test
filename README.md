@@ -9,11 +9,10 @@ TYPEORM_USERNAME=        # Enter the username for your database
 TYPEORM_PASSWORD=        # Enter the password for your database
 TYPEORM_DATABASE=        # Enter the name of your database
 TYPEORM_PORT=            # Enter the port for your database
-TYPEORM_HOST=
+TYPEORM_HOST=            # Enter the host for your database
 
 Run the following command:
 
-docker-compose up --build      # Enter the host for your database
+docker-compose up --build
 
-Once you've filled in the .env file, you can now run your Dockerized application using docker-compose.
 ```
