@@ -1,4 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 import { TodoStatus } from './todo-status.enum';
 
 @Entity()
@@ -11,4 +16,7 @@ export class Todo {
 
   @Column({ default: TodoStatus.Pending })
   status: TodoStatus;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

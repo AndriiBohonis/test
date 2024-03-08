@@ -10,21 +10,22 @@ import {
 import { TodoService } from './todo.service';
 import { Todo } from './todo.entity';
 import { UpdateTodoDto } from './dto/update-todo.dto';
-import { TodoStatus } from './todo-status.enum';
+import { TodoFilter, TodoStatus } from './todo-status.enum';
 import { CreateTodoDto } from './create-todo.dto';
 
 @Controller('todos')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
-  @Get()
-  findAll(): Promise<Todo[]> {
-    return this.todoService.findAll();
-  }
-
-  @Get('/:status')
-  async findByStatus(@Param('status') status: TodoStatus): Promise<Todo[]> {
-    return this.todoService.findByStatus(status);
+  @Get(':status')
+  async findByStatus(
+    @Param('status') status: TodoFilter & TodoStatus,
+  ): Promise<Todo[]> {
+    if (status === 'all') {
+      return this.todoService.findAll();
+    } else {
+      return this.todoService.findByStatus(status);
+    }
   }
 
   @Post()

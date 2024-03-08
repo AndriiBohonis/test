@@ -27,7 +27,10 @@ export class TodoService {
 
   async updateStatus(id: number, updateTodoDto: UpdateTodoDto): Promise<Todo> {
     const { status } = updateTodoDto;
-    const options: FindOneOptions<Todo> = { where: { id } };
+    const options: FindOneOptions<Todo> = {
+      where: { id },
+      order: { id: 'ASC' },
+    };
     const todo = await this.todoRepository.findOne(options);
     if (!todo) {
       throw new Error('Todo not found');

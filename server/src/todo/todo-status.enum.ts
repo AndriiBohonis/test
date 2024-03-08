@@ -1,5 +1,7 @@
+export type TodoFilter = 'pending' | 'progress' | 'done' | 'all';
+
 export enum TodoStatus {
   Pending = 'pending',
-  InProgress = 'in_progress',
-  Completed = 'completed',
+  Progress = 'progress',
+  Done = 'done',
 }
