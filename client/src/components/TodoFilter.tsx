@@ -24,7 +24,7 @@ export const TodoViewer = () => {
             color='success'
             variant={view === 'done' ? 'outlined' : 'contained'}
             onClick={() => setView('done')}>
-            completed
+            done
           </Button>
         </ButtonGroup>
       </Box>
