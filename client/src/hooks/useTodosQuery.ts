@@ -12,7 +12,11 @@ export const useGetTodoQuery = (status: TodoStatusFilter) => {
 
 export const useNewTodo = () => {
   const client = useQueryClient();
-  const { mutate: create } = useMutation({
+  const {
+    mutate: create,
+    error: createError,
+    isPending,
+  } = useMutation({
     mutationFn: createTodo,
     onSuccess: newTodo => {
       if (newTodo) {
@@ -32,13 +36,13 @@ export const useNewTodo = () => {
       console.error('An error occurred while creating new todo:', err);
     },
   });
-  return create;
+  return { create, createError, isPending };
 };
 
 export const useStatusTodo = () => {
   const client = useQueryClient();
 
-  const { mutate: updateStatus } = useMutation({
+  const { mutate: updateStatus, isSuccess } = useMutation({
     mutationFn: (variables: TodoUpdateVariables) => updateStatusTodo(variables),
 
     onSuccess: (updatedTodo, variables) => {
@@ -57,16 +61,21 @@ export const useStatusTodo = () => {
     },
   });
 
-  return updateStatus;
+  return { updateStatus, isSuccess };
 };
 
 export const useRemoveTodo = () => {
   const client = useQueryClient();
 
-  const { mutate: remove } = useMutation({
+  const {
+    mutate: remove,
+    isPending,
+    isError,
+    data,
+  } = useMutation({
     mutationFn: removeTodo,
 
-    onSuccess: id => {
+    onSuccess: ({ id }) => {
       client.setQueriesData<Todo[]>({ queryKey: ['todos'] }, oldTodos => {
         return oldTodos?.filter(item => item.id !== id);
       });
@@ -80,5 +89,5 @@ export const useRemoveTodo = () => {
     },
   });
 
-  return remove;
+  return { remove, isPending, isError, data };
 };

@@ -16,16 +16,19 @@ export const TodoList = ({ status }: TodoListProps) => {
   if (isLoading) {
     return <Loader />;
   }
-  if (error) {
-    return <ToDoSnackbar error={true} massage={'server connection error'} />;
-  }
+
   return (
-    <List>
-      {isSuccess &&
-        data
-          .slice()
-          .sort((a, b) => parseInt(a.id) - parseInt(b.id))
-          .map(todo => <TodoItem key={todo.id} {...todo} />)}
-    </List>
+    <>
+      <List>
+        {isSuccess &&
+          data
+            .slice()
+            .sort((a, b) => parseInt(a.id) - parseInt(b.id))
+            .map(todo => <TodoItem key={todo.id} {...todo} />)}
+      </List>
+      {error && (
+        <ToDoSnackbar error={true} massage={'server connection error'} />
+      )}
+    </>
   );
 };

@@ -26,6 +26,6 @@ export const updateStatusTodo = async ({ id, status }: TodoUpdateVariables) => {
 };
 
 export const removeTodo = async (id: string) => {
-  await axios.delete(`todos/${id}`);
-  return id;
+  const response = await axios.delete(`todos/${id}`);
+  return { ...response.data, id };
 };
