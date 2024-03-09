@@ -29,7 +29,6 @@ export class TodoService {
     const { status } = updateTodoDto;
     const options: FindOneOptions<Todo> = {
       where: { id },
-      order: { id: 'ASC' },
     };
     const todo = await this.todoRepository.findOne(options);
     if (!todo) {
