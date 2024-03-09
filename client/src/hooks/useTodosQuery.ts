@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Todo, TodoStatusFilter, TodoUpdateVariables } from '../types/todo';
 import { createTodo, getTodo, removeTodo, updateStatusTodo } from '../api';
 
-export const useTodoQuery = (status: TodoStatusFilter) => {
+export const useGetTodoQuery = (status: TodoStatusFilter) => {
   return useQuery({
     queryFn: () => getTodo(status),
     queryKey: ['todos', status],

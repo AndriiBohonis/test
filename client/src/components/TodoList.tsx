@@ -1,4 +1,4 @@
-import { useTodoQuery } from '../hooks/useTodosQuery';
+import { useGetTodoQuery } from '../hooks/useTodosQuery';
 import { TodoStatusFilter } from '../types/todo';
 import Loader from './Lader';
 import ToDoSnackbar from './SneckBar';
@@ -11,7 +11,7 @@ type TodoListProps = {
   status: TodoStatusFilter;
 };
 export const TodoList = ({ status }: TodoListProps) => {
-  const { data, isLoading, isSuccess, error } = useTodoQuery(status);
+  const { data, isLoading, isSuccess, error } = useGetTodoQuery(status);
 
   if (isLoading) {
     return <Loader />;
