@@ -18,17 +18,18 @@ export const useNewTodo = () => {
     isPending,
   } = useMutation({
     mutationFn: createTodo,
-    onSuccess: newTodo => {
+    onSuccess: (newTodo: Todo) => {
       if (newTodo) {
-        client.setQueriesData({ queryKey: ['todos'] }, oldTodos => {
-          if (oldTodos) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore
-            return [...oldTodos, newTodo];
-          } else {
-            return newTodo;
+        client.setQueriesData<Todo[]>(
+          { queryKey: ['todos'] },
+          (oldTodos: Todo[] | undefined) => {
+            if (oldTodos) {
+              return [...oldTodos, newTodo];
+            } else {
+              return [newTodo];
+            }
           }
-        });
+        );
       }
       client.invalidateQueries({ queryKey: ['todos'], refetchType: 'none' });
     },

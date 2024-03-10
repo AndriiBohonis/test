@@ -13,7 +13,7 @@ export const getTodo = async (status: TodoStatusFilter) => {
   return response.data;
 };
 export const createTodo = async (todo: string) => {
-  const response = await axios.post<Todo[]>(`todos`, {
+  const response = await axios.post<Todo>(`todos`, {
     todo,
   });
   return response.data;
