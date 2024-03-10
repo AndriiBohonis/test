@@ -19,7 +19,7 @@ export const TodoList = ({ status }: TodoListProps) => {
 
   return (
     <>
-      <List>
+      <List sx={{ height: '60vh', overflow: 'scroll' }}>
         {isSuccess &&
           data
             .slice()
