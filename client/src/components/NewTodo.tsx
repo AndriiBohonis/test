@@ -1,10 +1,9 @@
 import { useState } from 'react';
-
 import { Box, Button, CircularProgress, Stack, TextField } from '@mui/material';
 import { useNewTodo } from '../hooks/useTodosQuery';
-import ToDoSnackbar from './SneckBar';
+import { ToDoSnackbar } from './SneckBar';
 
-const NewTodo = () => {
+export const NewTodo = () => {
   const [todo, setTodo] = useState('');
   const [inputError, setInputError] = useState('');
 
@@ -57,5 +56,3 @@ const NewTodo = () => {
     </>
   );
 };
-
-export { NewTodo };

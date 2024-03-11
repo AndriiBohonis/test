@@ -2,9 +2,9 @@ import { Button, CircularProgress, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useRemoveTodo } from '../hooks/useTodosQuery';
-import ToDoSnackbar from './SneckBar';
+import { ToDoSnackbar } from './SneckBar';
 
-export default function RemoveButton({ id }: { id: string }) {
+export const RemoveButton = ({ id }: { id: string }) => {
   const { remove, isPending, isError } = useRemoveTodo();
 
   if (isError) {
@@ -22,4 +22,4 @@ export default function RemoveButton({ id }: { id: string }) {
       </Button>
     </Tooltip>
   );
-}
+};

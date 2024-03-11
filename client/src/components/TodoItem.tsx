@@ -9,8 +9,7 @@ import {
 } from '@mui/material';
 import { Todo } from '../types/todo';
 import { useStatusTodo } from '../hooks/useTodosQuery';
-
-import RemoveButton from './RemoveButton';
+import { RemoveButton } from './RemoveButton';
 
 export const TodoItem = ({ status, id, todo }: Todo) => {
   const { updateStatus } = useStatusTodo();

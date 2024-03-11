@@ -1,6 +1,6 @@
 import { Backdrop, CircularProgress, Stack } from '@mui/material';
 
-export default function Loader() {
+export const Loader = () => {
   return (
     <Stack minHeight='100vh'>
       <Backdrop open={true}>
@@ -8,4 +8,4 @@ export default function Loader() {
       </Backdrop>
     </Stack>
   );
-}
+};

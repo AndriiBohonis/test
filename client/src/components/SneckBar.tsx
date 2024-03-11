@@ -1,13 +1,13 @@
 import { Alert, Snackbar } from '@mui/material';
 import { useState } from 'react';
 
-export default function ToDoSnackbar({
+export const ToDoSnackbar = ({
   error = false,
   massage,
 }: {
   error?: boolean;
   massage: string;
-}) {
+}) => {
   const [open, setOpen] = useState(true);
 
   const handleClose = (
@@ -30,4 +30,4 @@ export default function ToDoSnackbar({
       </Alert>
     </Snackbar>
   );
-}
+};
