@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useRemoveTodo } from '../hooks/useTodosQuery';
 import { ToDoSnackbar } from './SneckBar';
 
-export const RemoveButton = ({ id }: { id: string }) => {
+export const RemoveButton = ({ id }: { id: number }) => {
   const { remove, isPending, isError } = useRemoveTodo();
 
   if (isError) {

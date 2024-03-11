@@ -17,13 +17,15 @@ export const TodoList = ({ status }: TodoListProps) => {
     return <Loader />;
   }
 
+  console.log(data);
+
   return (
     <>
       <List sx={{ height: '60vh', overflow: 'scroll' }}>
         {isSuccess &&
           data
             .slice()
-            .sort((a, b) => parseInt(a.id) - parseInt(b.id))
+            .sort((a, b) => a.id - b.id)
             .map(todo => <TodoItem key={todo.id} {...todo} />)}
       </List>
       {error && (
