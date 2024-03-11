@@ -17,8 +17,6 @@ export const TodoList = ({ status }: TodoListProps) => {
     return <Loader />;
   }
 
-  console.log(data);
-
   return (
     <>
       <List sx={{ height: '60vh', overflow: 'scroll' }}>
