@@ -32,7 +32,7 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
             spacing={4}
             direction='row'
             alignItems={'center'}>
-            <ButtonGroup size='small'>
+            <ButtonGroup size='small' orientation='vertical'>
               <Button
                 sx={{ fontSize: '8px' }}
                 disabled={status === 'progress'}
@@ -51,7 +51,7 @@ export const TodoItem = ({ status, id, todo }: Todo) => {
             </ButtonGroup>
             <Typography
               sx={{
-                fontSize: { sx: '16px', md: '24px' },
+                fontSize: { sx: '14px', md: '24px' },
                 flexGrow: 1,
                 textDecoration: status === 'done' ? 'line-through' : 'none',
               }}
